@@ -310,8 +310,8 @@ var game = {
 	
 
 		// Dibujar el fondo con desplazamiento de paralaje
-		game.context.drawImage(game.currentLevel.backgroundImage,game.offsetLeft/4,0,640,480,0,0,640,480);
-		game.context.drawImage(game.currentLevel.foregroundImage,game.offsetLeft,0,640,480,0,0,640,480);
+		game.context.drawImage(game.currentLevel.backgroundImage,game.offsetLeft/4,0,840,480,0,0,840,480);
+		game.context.drawImage(game.currentLevel.foregroundImage,game.offsetLeft,0,840,480,0,0,840,480);
 
 		// Dibujar la honda
 		game.context.drawImage(game.slingshotImage,game.slingshotX-game.offsetLeft,game.slingshotY);
@@ -397,26 +397,26 @@ var levels = {
 	data:[
 	 {   // Primer nivel 
 		foreground:'stadium',
-		background:'clouds-background',
+		background:'stadium',
 		entities:[
 			{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
 			{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
 
 			{type:"block", name:"wood", x:520,y:380,angle:90,width:100,height:25},
 			{type:"block", name:"glass", x:520,y:280,angle:90,width:100,height:25},								
-			{type:"villain", name:"iug",x:520,y:205,calories:590},
+			{type:"villain", name:"barsa",x:520,y:205,calories:590},
 
 			{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
 			{type:"block", name:"glass", x:620,y:280,angle:90,width:100,height:25},								
-			{type:"villain", name:"fries", x:620,y:205,calories:420},				
+			{type:"villain", name:"leganes", x:620,y:205,calories:420},				
 
-			{type:"hero", name:"orange",x:80,y:405},
-			{type:"hero", name:"ball",x:140,y:405},
+			{type:"hero", name:"ball",x:80,y:405},
+			{type:"hero", name:"ball2",x:140,y:405},
 		]
 	 },
 		{   // Segundo nivel
-			foreground:'stadium',
-			background:'clouds-background',
+			foreground:'stadium2', 
+			background:'stadium2',
 			entities:[
 				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
 				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
@@ -431,18 +431,19 @@ var levels = {
 				{type:"block", name:"glass", x:770,y:255,angle:90,width:100,height:25},
 				{type:"block", name:"wood", x:720,y:192.5,width:100,height:25},	
 
-				{type:"villain", name:"burger",x:715,y:155,calories:590},
+				{type:"villain", name:"betis",x:715,y:155,calories:590},
 				{type:"villain", name:"fries",x:670,y:405,calories:420},
-				{type:"villain", name:"sodacan",x:765,y:400,calories:150},
+				{type:"villain", name:"girona",x:765,y:400,calories:150},
 
-				{type:"hero", name:"strawberry",x:30,y:415},
+				{type:"hero", name:"ball4",x:30,y:415},
 				{type:"hero", name:"orange",x:80,y:405},
-				{type:"hero", name:"apple",x:140,y:405},
+				{type:"hero", name:"ball3",x:140,y:405},
 			]
 		},
 		{
-            foreground: "desert-foreground",
-            background: "clouds-background",
+			// tercer nivel
+            foreground: "stadium3",
+            background: "stadium3", 
             			entities:[
             				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
             				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
@@ -460,17 +461,109 @@ var levels = {
             				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
             				{type:"block", name:"wood", x:820,y:280,angle:90,width:100,height:25},
 
-            				{type:"villain", name:"burguer",x:620,y:200,points:100},
+            				{type:"villain", name:"betis",x:620,y:200,points:100},
             				{type:"villain", name:"fries",x:720,y:200,points:200},
-            				{type:"villain", name:"sodacan",x:820,y:200,points:100},
+            				{type:"villain", name:"girona",x:820,y:200,points:100},
 
 
 
-            				{type:"hero", name:"strawberry",x:80,y:405},
-            				{type:"hero", name:"apple",x:140,y:405},
+            				{type:"hero", name:"ball4",x:80,y:405},
+            				{type:"hero", name:"ball3",x:140,y:405},
             			]
 
-        }
+					},
+					{
+		   // Cuarto nivel 
+			foreground:'stadium',
+			background:'stadium',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+
+				{type:"block", name:"wood", x:620,y:220,angle:180,width:100,height:25},
+				{type:"block", name:"wood", x:720,y:220,angle:180,width:100,height:25},
+				{type:"block", name:"wood", x:820,y:220,angle:180,width:100,height:25},
+
+				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:620,y:280,angle:90,width:100,height:25},								
+	
+				{type:"block", name:"glass", x:720,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:720,y:280,angle:90,width:100,height:25},								
+	
+				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:820,y:280,angle:90,width:100,height:25},		
+
+				{type:"villain", name:"betis",x:620,y:200,points:100},
+				{type:"villain", name:"pateti",x:720,y:200,points:200},
+				{type:"villain", name:"barsa",x:820,y:200,points:100},
+				
+
+
+				{type:"hero", name:"ball2",x:80,y:405},
+				{type:"hero", name:"ball",x:140,y:405},
+			]
+		 },
+		 {   // Quinto nivel 
+			foreground:'stadium2',
+			background:'stadium2',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+                {type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+				
+				{type:"block", name:"wood", x:720,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:670,y:317.5,width:100,height:25},
+				{type:"block", name:"glass", x:770,y:317.5,width:100,height:25},
+
+				{type:"block", name:"wood", x:620,y:255,angle:90,width:100,height:25},
+                {type:"block", name:"glass", x:720,y:255,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:820,y:255,angle:90,width:100,height:25},
+                {type:"block", name:"wood", x:670,y:192.5,width:100,height:25},
+				{type:"block", name:"wood", x:770,y:192.5,width:100,height:25},
+
+				//villano primer piso
+				{type:"villain", name:"girona",x:755,y:400,points:100},
+				{type:"villain", name:"leganes",x:655,y:400,points:100},
+				//Villanos segundo piso
+				{type:"villain", name:"psg",x:650,y:285,points:300},
+				{type:"villain", name:"sporting",x:750,y:285,points:300},
+				//Villano tercer piso
+				{type:"villain", name:"mancity",x:730,y:155,points:200},
+
+				{type:"hero", name:"1_heroe",x:30,y:415},
+                {type:"hero", name:"2_heroe",x:80,y:405},
+                {type:"hero", name:"3_heroe",x:140,y:405},
+
+			   ]
+		 },
+		 {   // Sexto nivel 
+			foreground:'stadium',
+			background:'stadium',
+			entities:[
+				{type:"ground", name:"dirt", x:500,y:440,width:1000,height:20,isStatic:true},
+				{type:"ground", name:"wood", x:185,y:390,width:30,height:80,isStatic:true},
+	
+				{type:"block", name:"wood", x:820,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:720,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:620,y:380,angle:90,width:100,height:25},
+				{type:"block", name:"glass", x:670,y:317.5,width:100,height:25},
+				{type:"block", name:"glass", x:770,y:317.5,width:100,height:25},				
+
+				{type:"block", name:"wood", x:670,y:255,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:770,y:255,angle:90,width:100,height:25},
+				{type:"block", name:"wood", x:720,y:192.5,width:100,height:25},	
+
+				{type:"villain", name:"4_villain",x:670,y:405,points:100},
+				{type:"villain", name:"4_villain",x:715,y:280,points:300},
+				{type:"villain", name:"4_villain",x:715,y:155,points:300},
+				{type:"villain", name:"4_villain",x:765,y:400,points:200},
+
+				{type:"hero", name:"5_heroe",x:30,y:415},
+				{type:"hero", name:"6_heroe",x:80,y:405},
+				{type:"hero", name:"7_heroe",x:140,y:405},
+			]
+		 }
 
 
 	],
@@ -544,7 +637,7 @@ var entities = {
 			friction:1.5,
 			restitution:0.2,	
 		},
-		"burger":{
+		"betis":{
 			shape:"circle",
 			fullHealth:40,
 			radius:25,
@@ -552,16 +645,15 @@ var entities = {
 			friction:0.5,
 			restitution:0.4,	
 		},
-		"sodacan":{
-			shape:"rectangle",
+		"girona":{
+			shape:"circle",
+			radius:25,
 			fullHealth:80,
-			width:40,
-			height:60,
 			density:1,
 			friction:0.5,
 			restitution:0.7,	
 		},
-		"fries":{
+		"leganes":{
 			shape:"rectangle",
 			fullHealth:50,
 			width:40,
@@ -570,28 +662,6 @@ var entities = {
 			friction:0.5,
 			restitution:0.6,	
 		},
-		"apple":{
-			shape:"circle",
-			radius:25,
-			density:1.5,
-			friction:0.5,
-			restitution:0.4,	
-		},
-		"orange":{
-			shape:"circle",
-			radius:25,
-			density:1.5,
-			friction:0.5,
-			restitution:0.4,	
-		},
-		"strawberry":{
-			shape:"circle",
-			radius:15,
-			density:2.0,
-			friction:0.5,
-			restitution:0.4,	
-		},
-
 		"ball":{
 			shape:"circle",
 			radius:25,
@@ -599,8 +669,37 @@ var entities = {
 			friction:0.5,
 			restitution:0.4,	
 		},
+		"ball1":{
+			shape:"circle",
+			radius:25,
+			density:1.5,
+			friction:0.5,
+			restitution:0.4,	
+		},
+		"ball2":{
+			shape:"circle",
+			radius:25,
+			density:1.5,
+			friction:0.5,	
+			restitution:0.4,	
+		},
+		"ball3":{
+			shape:"circle",
+			radius:25,
+			density:2.0,
+			friction:0.5,
+			restitution:0.4,	
+		},
 
-		"iug":{
+		"ball4":{
+			shape:"circle",
+			radius:25,
+			density:1.5,
+			friction:0.5,
+			restitution:0.4,	
+		},
+
+		"barsa":{
 			shape:"circle",
 			fullHealth:40,
 			radius:25,
@@ -608,6 +707,31 @@ var entities = {
 			friction:0.5,
 			restitution:0.4,	
 		},
+		"psg":{
+			shape:"circle",
+			radius:25,
+			fullHealth:80,
+			density:1,
+			friction:0.5,
+			restitution:0.7,	
+		},
+		"sporting":{
+			shape:"circle",
+			radius:25,
+			fullHealth:80,
+			density:1,
+			friction:0.5,
+			restitution:0.7,	
+		},
+		"mancity":{
+			shape:"circle",
+			radius:25,
+			fullHealth:80,
+			density:1,
+			friction:0.5,
+			restitution:0.7,	
+		},
+
 
 		
 	},

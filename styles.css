@@ -1,21 +1,24 @@
 #gamecontainer {
-	width:640px;
-	height:480px;
+	width: 840px;
+    height: 480px;
 	background: url(images/splashscreen.png);
 	border: 1px solid black;
+	background-size: cover;
 }
 
 .gamelayer {
-	width:640px;
-	height:480px;
+	width: 840px;
+    height: 480px;
 	position:absolute;
 	display:none;
+	background-size: cover;
 }
 
 /* Pantalla del menú de incio del juego */
 #gamestartscreen {
 	padding-top:250px;
 	text-align:center;
+	padding-left:350px;	
 }
 
 #gamestartscreen img {
@@ -26,7 +29,7 @@
 /* Pantalla de selección de nivel */
 #levelselectscreen {
 	padding-top:150px;
-	padding-left:50px;	
+	padding-left:100px;	
 }
 
 #levelselectscreen input {
