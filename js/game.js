@@ -46,6 +46,8 @@ var game = {
 		levels.init();
 		loader.init();
 		mouse.init();
+		$('.a').hide();
+		$('#backbutton2').hide();
 
 		// Cargar todos los efectos de sonido y música de fondo
 	
@@ -93,7 +95,15 @@ var game = {
 	showLevelScreen:function(){
 		$('.gamelayer').hide();
 		$('#levelselectscreen').show('slow');
+		$('.a').show('slow');
 	},
+
+	showMainScreen:function(){
+		$('.gamelayer').hide();
+		$('.a').hide();
+		$('#gamestartscreen').show('slow');
+		}, //AÑADIDO PARA EL BOTON DE RETURN, VOLVER AL MENU PRINCIPAL
+
 	restartLevel:function(){
 		window.cancelAnimationFrame(game.animationFrame);		
 		game.lastUpdateTime = undefined;
@@ -206,6 +216,7 @@ var game = {
 				game.currentHero.SetPosition({x:(mouse.x+game.offsetLeft)/box2d.scale,y:mouse.y/box2d.scale});
 			} else {
 				game.mode = "fired";
+
 				game.slingshotReleasedSound.play();								
 				var impulseScaleFactor = 0.75;
 				
@@ -219,18 +230,27 @@ var game = {
 		}
 
 		if (game.mode == "fired"){		
-			//Vista panorámica donde el héroe se encuentra actualmente...
 			var heroX = game.currentHero.GetPosition().x*box2d.scale;
-			game.panTo(heroX);
+                game.panTo(heroX);
 
-			//Y esperar hasta que deja de moverse o está fuera de los límites
-			if(!game.currentHero.IsAwake() || heroX<0 || heroX >game.currentLevel.foregroundImage.width ){
-				// Luego borra el viejo héroe
-				box2d.world.DestroyBody(game.currentHero);
-				game.currentHero = undefined;
-				// y carga el siguiente héroe
-				game.mode = "load-next-hero";
-			}
+                // Comienza un temporizador cuando el héroe es lanzado
+                if (!game.heroLaunchedTime) {
+                    game.heroLaunchedTime = new Date().getTime();
+                }
+
+                var timeSinceLaunched = new Date().getTime() - game.heroLaunchedTime;
+                var heroStillAwake = game.currentHero.IsAwake();
+                var heroOutOfBounds = heroX<0 || heroX >game.currentLevel.foregroundImage.width;
+
+                // Verifica si ha pasado suficiente tiempo o el héroe se ha detenido
+                if (timeSinceLaunched > 3000 || !heroStillAwake || heroOutOfBounds) { // 3000ms = 3 segundos
+                    // Luego borra el viejo héroe
+                    box2d.world.DestroyBody(game.currentHero);
+                    game.currentHero = undefined;
+                    game.heroLaunchedTime = null; // Restablecer el temporizador para el próximo héroe
+                    // y carga el siguiente héroe
+                    game.mode = "load-next-hero";
+                }
 		}
 		
 
@@ -432,7 +452,7 @@ var levels = {
 				{type:"block", name:"wood", x:720,y:192.5,width:100,height:25},	
 
 				{type:"villain", name:"betis",x:715,y:155,calories:590},
-				{type:"villain", name:"fries",x:670,y:405,calories:420},
+				{type:"villain", name:"sporting",x:670,y:405,calories:420},
 				{type:"villain", name:"girona",x:765,y:400,calories:150},
 
 				{type:"hero", name:"ball4",x:30,y:415},
@@ -462,7 +482,7 @@ var levels = {
             				{type:"block", name:"wood", x:820,y:280,angle:90,width:100,height:25},
 
             				{type:"villain", name:"betis",x:620,y:200,points:100},
-            				{type:"villain", name:"fries",x:720,y:200,points:200},
+            				{type:"villain", name:"psg",x:720,y:200,points:200},
             				{type:"villain", name:"girona",x:820,y:200,points:100},
 
 
@@ -494,7 +514,7 @@ var levels = {
 				{type:"block", name:"wood", x:820,y:280,angle:90,width:100,height:25},		
 
 				{type:"villain", name:"betis",x:620,y:200,points:100},
-				{type:"villain", name:"pateti",x:720,y:200,points:200},
+				{type:"villain", name:"girona",x:720,y:200,points:200},
 				{type:"villain", name:"barsa",x:820,y:200,points:100},
 				
 
@@ -531,9 +551,9 @@ var levels = {
 				//Villano tercer piso
 				{type:"villain", name:"mancity",x:730,y:155,points:200},
 
-				{type:"hero", name:"1_heroe",x:30,y:415},
-                {type:"hero", name:"2_heroe",x:80,y:405},
-                {type:"hero", name:"3_heroe",x:140,y:405},
+				{type:"hero", name:"ball4",x:30,y:415},
+                {type:"hero", name:"ball3",x:80,y:405},
+                {type:"hero", name:"ball2",x:140,y:405},
 
 			   ]
 		 },
@@ -554,14 +574,14 @@ var levels = {
 				{type:"block", name:"wood", x:770,y:255,angle:90,width:100,height:25},
 				{type:"block", name:"wood", x:720,y:192.5,width:100,height:25},	
 
-				{type:"villain", name:"4_villain",x:670,y:405,points:100},
-				{type:"villain", name:"4_villain",x:715,y:280,points:300},
-				{type:"villain", name:"4_villain",x:715,y:155,points:300},
-				{type:"villain", name:"4_villain",x:765,y:400,points:200},
+				{type:"villain", name:"betis",x:670,y:405,points:100},
+				{type:"villain", name:"leganes",x:715,y:280,points:300},
+				{type:"villain", name:"psg",x:715,y:155,points:300},
+				{type:"villain", name:"mancity",x:765,y:400,points:200},
 
-				{type:"hero", name:"5_heroe",x:30,y:415},
-				{type:"hero", name:"6_heroe",x:80,y:405},
-				{type:"hero", name:"7_heroe",x:140,y:405},
+				{type:"hero", name:"ball",x:30,y:415},
+				{type:"hero", name:"ball2",x:80,y:405},
+				{type:"hero", name:"ball4",x:140,y:405},
 			]
 		 }
 

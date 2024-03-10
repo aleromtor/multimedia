@@ -15,6 +15,7 @@
 			</canvas>
 			
 			<div id="scorescreen" class="gamelayer">
+				<input id="backbutton" type="image" src="images/icons/return.png" onclick="game.showLevelScreen();">
 				<img id="togglemusic" src="images/icons/sound.png" onclick="game.toggleBackgroundMusic();">
 				<img src="images/icons/prev.png" onclick="game.restartLevel();">
 				<span id="score">Score: 0</span>
@@ -25,8 +26,11 @@
 				<img src="images/icons/settings.png" alt="Settings">
 			</div>
 			
-			<div id="levelselectscreen" class="gamelayer">
-			</div>
+			<!--Level Selection Screen-->
+			<div class="a" >
+				<input id="backbutton" type="image" src="images/icons/return.png" onclick="game.showMainScreen();">
+				<div id="levelselectscreen" class="gamelayer"></div>
+			</div>	
 			
 			<div id="loadingscreen" class="gamelayer">
 				<div id="loadingmessage"></div>
