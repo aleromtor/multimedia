@@ -1,0 +1,25 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffffff; /* Fondo claro */
+    color: #333333; /* Texto oscuro para buen contraste */
+}
+
+header, footer {
+    background-color: #0d6efd; /* Azul oscuro para un contraste alto con el texto blanco */
+    color: #ffffff;
+    padding: 1em;
+    text-align: center;
+}
+
+#intro img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%; /* Ajuste del tamaño para visualización óptima */
+    max-width: 600px; /* Máximo ancho para controlar el tamaño en dispositivos grandes */
+    height: auto;
+}
+
+.navbar {
+    margin-bottom: 20px;
+}
